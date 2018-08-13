@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS Bug</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="JS Bug">
+<meta property="og:url" content="https://jsbug.com/index.html">
+<meta property="og:site_name" content="JS Bug">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS Bug">
+  
+    <link rel="alternate" href="/atom.xml" title="JS Bug" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JS Bug</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Keep Learning Everyday</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsbug.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-redmine" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/redmine/" class="article-date">
+  <time datetime="2018-08-13T08:23:32.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/13/redmine/">Redmine 和项目管理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.redmine.org" target="_blank" rel="noopener">Redmine</a> 是基于 Ruby 开发的项目管理工具，代码开源免费，功能强大，适合公司内部使用。</p>
+<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><p>我主要是参考以下两篇文档，在 Mac 下安装的 Redmine，安装布署过程中碰到了些问题，记录在下面。</p>
+<p><a href="https://www.redmine.org/projects/redmine/wiki/RedmineInstall" target="_blank" rel="noopener">https://www.redmine.org/projects/redmine/wiki/RedmineInstall</a><br><a href="https://www.cnblogs.com/edward2013/p/5533303.html" target="_blank" rel="noopener">https://www.cnblogs.com/edward2013/p/5533303.html</a></p>
+<h2 id="安装过程中碰到的些问题"><a href="#安装过程中碰到的些问题" class="headerlink" title="安装过程中碰到的些问题"></a>安装过程中碰到的些问题</h2><h3 id="安装-RVM"><a href="#安装-RVM" class="headerlink" title="安装 RVM"></a>安装 RVM</h3><p>Mac 自带 Ruby，不需要安装 RVM 及 Ruby<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># \curl -sSL https://get.rvm.io | bash -s stable</span></span><br><span class="line"><span class="comment"># source /etc/profile.d/rvm.sh</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h3><p>下面以安装 Ruby 2.2 版本为例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rvm install 2.2</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="列出-RVM-管理下的-Ruby-版本"><a href="#列出-RVM-管理下的-Ruby-版本" class="headerlink" title="列出 RVM 管理下的 Ruby 版本"></a>列出 RVM 管理下的 Ruby 版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rvm list known</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看-Ruby-版本"><a href="#查看-Ruby-版本" class="headerlink" title="查看 Ruby 版本"></a>查看 Ruby 版本</h3><p>Redmine 的版本对 Ruby 版本有兼容要求，注意对照着上面 redmine 的 wiki 文档查看。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ruby -v</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Mac-下安装-installer"><a href="#Mac-下安装-installer" class="headerlink" title="Mac 下安装 installer"></a>Mac 下安装 installer</h3><p>Mac 自带 Ruby，为了不影响系统安装库，需要设置用户库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># export GEM_HOME=$HOME/.gem_home</span></span><br><span class="line"><span class="comment"># export PATH=$PATH:$HOME/.gem_home/bin</span></span><br><span class="line"><span class="comment"># gem install bundler</span></span><br><span class="line"><span class="comment"># bundle install --without development test rmagick</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="生成-Redmine-数据库"><a href="#生成-Redmine-数据库" class="headerlink" title="生成 Redmine 数据库"></a>生成 Redmine 数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># RAILS_ENV=production bundle exec rake db:migrate</span></span><br><span class="line"><span class="comment"># RAILS_ENV=production REDMINE_LANG=zh bundle exec rake redmine:load_default_data</span></span><br></pre></td></tr></table></figure>
+<p>如果生成数据库时遇到 <code>Error: Specified key was too long; max key length is 767 bytes</code> 问题，参考下面的解决方法。</p>
+<h3 id="MySQL-innodb-索引过长的问题"><a href="#MySQL-innodb-索引过长的问题" class="headerlink" title="MySQL innodb 索引过长的问题"></a>MySQL innodb 索引过长的问题</h3><p>MySQL 必须设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set global innodb_large_prefix=1;</span><br><span class="line">set global innodb_file_format=BARRACUDA;</span><br><span class="line">set global innodb_file_per_table=1;</span><br></pre></td></tr></table></figure></p>
+<p>需要修改 redmine 目录下 db/migrate 里的 create_table 语句，将创建表的语句加入 <code>options: &#39; ROW_FORMAT=DYNAMIC &#39;</code>，解决索引长度问题。</p>
+<h3 id="目录权限"><a href="#目录权限" class="headerlink" title="目录权限"></a>目录权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo chmod -R 777 files log tmp public/plugin_assets</span></span><br></pre></td></tr></table></figure>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd redmine</span></span><br><span class="line"><span class="comment"># rails server -b0.0.0.0 -p6853 webrick -e production -d</span></span><br></pre></td></tr></table></figure>
+<h3 id="默认用户名密码"><a href="#默认用户名密码" class="headerlink" title="默认用户名密码"></a>默认用户名密码</h3><p>admin/admin</p>
+<h3 id="邮件发送帐号的配置"><a href="#邮件发送帐号的配置" class="headerlink" title="邮件发送帐号的配置"></a>邮件发送帐号的配置</h3><p>需要使用相应的 smtp 帐号，使用 sendmail 不能正常发送。SSL 邮件配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">default:</span></span><br><span class="line"><span class="attr">  email_delivery:</span></span><br><span class="line"><span class="attr">    delivery_method:</span> <span class="string">:smtp</span></span><br><span class="line"><span class="attr">    smtp_settings:</span></span><br><span class="line"><span class="attr">      ssl:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      enable_starttls_auto:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      address:</span> <span class="string">"smtp.exmail.qq.com"</span></span><br><span class="line"><span class="attr">      port:</span> <span class="number">465</span></span><br><span class="line"><span class="attr">      domain:</span> <span class="string">"smtp.exmail.qq.com"</span></span><br><span class="line"><span class="attr">      authentication:</span> <span class="string">:login</span></span><br><span class="line"><span class="attr">      user_name:</span> <span class="string">"user@domain"</span></span><br><span class="line"><span class="attr">      password:</span> <span class="string">"password"</span></span><br></pre></td></tr></table></figure>
+<h3 id="邮件通知"><a href="#邮件通知" class="headerlink" title="邮件通知"></a>邮件通知</h3><p>邮件发送人必须是 user@domain，和上面的配置一致。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jsbug.com/2018/08/13/redmine/" data-id="cjks0jv770000mwq7bal34ms4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redmine/">redmine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/redmine/">redmine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/redmine/" style="font-size: 10px;">redmine</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/redmine/">Redmine 和项目管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Lewis Lv<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
