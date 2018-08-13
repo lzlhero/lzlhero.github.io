@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>JS Bug</title>
+  
+  <subtitle>Keep Learning Everyday</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://jsbug.com/"/>
+  <updated>2018-08-13T09:58:39.217Z</updated>
+  <id>https://jsbug.com/</id>
+  
+  <author>
+    <name>Lewis Lv</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redmine 和项目管理</title>
+    <link href="https://jsbug.com/2018/08/13/redmine/"/>
+    <id>https://jsbug.com/2018/08/13/redmine/</id>
+    <published>2018-08-13T08:23:32.000Z</published>
+    <updated>2018-08-13T09:58:39.217Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.redmine.org" target="_blank" rel="noopener">Redmine</a> 是基于 Ruby 开发的项目管理工具，代码开源免费，功能强大，适合公司内部使用。</p><h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><p>我主要是参考以下两篇文档，在 Mac 下安装的 Redmine，安装布署过程中碰到了些问题，记录在下面。</p><p><a href="https://www.redmine.org/projects/redmine/wiki/RedmineInstall" target="_blank" rel="noopener">https://www.redmine.org/projects/redmine/wiki/RedmineInstall</a><br><a href="https://www.cnblogs.com/edward2013/p/5533303.html" target="_blank" rel="noopener">https://www.cnblogs.com/edward2013/p/5533303.html</a></p><h2 id="安装过程中碰到的些问题"><a href="#安装过程中碰到的些问题" class="headerlink" title="安装过程中碰到的些问题"></a>安装过程中碰到的些问题</h2><h3 id="安装-RVM"><a href="#安装-RVM" class="headerlink" title="安装 RVM"></a>安装 RVM</h3><p>Mac 自带 Ruby，不需要安装 RVM 及 Ruby<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># \curl -sSL https://get.rvm.io | bash -s stable</span></span><br><span class="line"><span class="comment"># source /etc/profile.d/rvm.sh</span></span><br></pre></td></tr></table></figure></p><h3 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h3><p>下面以安装 Ruby 2.2 版本为例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rvm install 2.2</span></span><br></pre></td></tr></table></figure></p><h3 id="列出-RVM-管理下的-Ruby-版本"><a href="#列出-RVM-管理下的-Ruby-版本" class="headerlink" title="列出 RVM 管理下的 Ruby 版本"></a>列出 RVM 管理下的 Ruby 版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rvm list known</span></span><br></pre></td></tr></table></figure><h3 id="查看-Ruby-版本"><a href="#查看-Ruby-版本" class="headerlink" title="查看 Ruby 版本"></a>查看 Ruby 版本</h3><p>Redmine 的版本对 Ruby 版本有兼容要求，注意对照着上面 redmine 的 wiki 文档查看。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ruby -v</span></span><br></pre></td></tr></table></figure></p><h3 id="Mac-下安装-installer"><a href="#Mac-下安装-installer" class="headerlink" title="Mac 下安装 installer"></a>Mac 下安装 installer</h3><p>Mac 自带 Ruby，为了不影响系统安装库，需要设置用户库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># export GEM_HOME=$HOME/.gem_home</span></span><br><span class="line"><span class="comment"># export PATH=$PATH:$HOME/.gem_home/bin</span></span><br><span class="line"><span class="comment"># gem install bundler</span></span><br><span class="line"><span class="comment"># bundle install --without development test rmagick</span></span><br></pre></td></tr></table></figure></p><h3 id="生成-Redmine-数据库"><a href="#生成-Redmine-数据库" class="headerlink" title="生成 Redmine 数据库"></a>生成 Redmine 数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># RAILS_ENV=production bundle exec rake db:migrate</span></span><br><span class="line"><span class="comment"># RAILS_ENV=production REDMINE_LANG=zh bundle exec rake redmine:load_default_data</span></span><br></pre></td></tr></table></figure><p>如果生成数据库时遇到 <code>Error: Specified key was too long; max key length is 767 bytes</code> 问题，参考下面的解决方法。</p><h3 id="MySQL-innodb-索引过长的问题"><a href="#MySQL-innodb-索引过长的问题" class="headerlink" title="MySQL innodb 索引过长的问题"></a>MySQL innodb 索引过长的问题</h3><p>MySQL 必须设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set global innodb_large_prefix=1;</span><br><span class="line">set global innodb_file_format=BARRACUDA;</span><br><span class="line">set global innodb_file_per_table=1;</span><br></pre></td></tr></table></figure></p><p>需要修改 redmine 目录下 db/migrate 里的 create_table 语句，将创建表的语句加入 <code>options: &#39; ROW_FORMAT=DYNAMIC &#39;</code>，解决索引长度问题。</p><h3 id="目录权限"><a href="#目录权限" class="headerlink" title="目录权限"></a>目录权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo chmod -R 777 files log tmp public/plugin_assets</span></span><br></pre></td></tr></table></figure><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd redmine</span></span><br><span class="line"><span class="comment"># rails server -b0.0.0.0 -p6853 webrick -e production -d</span></span><br></pre></td></tr></table></figure><h3 id="默认用户名密码"><a href="#默认用户名密码" class="headerlink" title="默认用户名密码"></a>默认用户名密码</h3><p>admin/admin</p><h3 id="邮件发送帐号的配置"><a href="#邮件发送帐号的配置" class="headerlink" title="邮件发送帐号的配置"></a>邮件发送帐号的配置</h3><p>需要使用相应的 smtp 帐号，使用 sendmail 不能正常发送。SSL 邮件配置如下：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">default:</span></span><br><span class="line"><span class="attr">  email_delivery:</span></span><br><span class="line"><span class="attr">    delivery_method:</span> <span class="string">:smtp</span></span><br><span class="line"><span class="attr">    smtp_settings:</span></span><br><span class="line"><span class="attr">      ssl:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      enable_starttls_auto:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      address:</span> <span class="string">"smtp.exmail.qq.com"</span></span><br><span class="line"><span class="attr">      port:</span> <span class="number">465</span></span><br><span class="line"><span class="attr">      domain:</span> <span class="string">"smtp.exmail.qq.com"</span></span><br><span class="line"><span class="attr">      authentication:</span> <span class="string">:login</span></span><br><span class="line"><span class="attr">      user_name:</span> <span class="string">"user@domain"</span></span><br><span class="line"><span class="attr">      password:</span> <span class="string">"password"</span></span><br></pre></td></tr></table></figure><h3 id="邮件通知"><a href="#邮件通知" class="headerlink" title="邮件通知"></a>邮件通知</h3><p>邮件发送人必须是 user@domain，和上面的配置一致。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.redmine.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Redmine&lt;/a&gt; 是基于 Ruby 开发的项目管理工具，代码开源免费，功能强大，适合公司内部使用。&lt;/p&gt;
+&lt;h2 id=&quot;安装教程&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="redmine" scheme="https://jsbug.com/tags/redmine/"/>
+    
+      <category term="项目管理" scheme="https://jsbug.com/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+</feed>
