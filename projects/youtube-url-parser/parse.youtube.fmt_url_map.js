@@ -9,7 +9,7 @@ class YouTubeParser {
     }
 
     buildVideoUrlHTMLTag(item, title, method) {
-        return '<a href="' + unescape(item.fmt_url) + " &title=" + escape(title.replace('" ',="" ''))="" +="" '"="" target="_blank"><b>' + method + '&nbsp;&nbsp;&nbsp;' + item.fmtstr + '</b></a>'
+        return '<a href="' + unescape(item.fmt_url) + "&title=" + escape(title.replace('"', '')) + '" target="_blank"><b>' + method + '&nbsp;&nbsp;&nbsp;' + item.fmtstr + '</b></a>'
     }
 
     parseInfo(infostr) {
@@ -51,14 +51,14 @@ class YouTubeParser {
 
         let dl_links_result = '';
         if (dllinks.length > 0) {
-            dl_links_result += dllinks.join('<br>');
+            dl_links_result += dllinks.join('<br />');
         }
         if (webmlinks.length > 0) {
-            dl_links_result += '<br>' + webmlinks.join('<br>');
+            dl_links_result += '<br />' + webmlinks.join('<br />');
         }
         if (dllinksAdaptive.length > 0) {
-            dl_links_result += '<br><br>special files (separated audio and video):<br>';
-            dl_links_result += '<br>' + dllinksAdaptive.join('<br>');
+            dl_links_result += '<br /><br />special files (separated audio and video):<br />';
+            dl_links_result += '<br />' + dllinksAdaptive.join('<br />');
         }
 
         let div_dl;
@@ -77,7 +77,7 @@ class YouTubeParser {
             let rdata_status = rdataArray['status'];
             let rdata_reason = this.urldecode(escape(rdataArray['reason']));
 
-            let result = '<b>&#28961;&#27861;&#21462;&#24471;&#24433;&#29255; URL</b><br>status : <span style="color:#f00;">' + rdata_status + '</span><br>' + 'reason : <span style="color:#f00;">' + rdata_reason + '</span>'
+            let result = '<b>&#28961;&#27861;&#21462;&#24471;&#24433;&#29255; URL</b><br />status : <span style="color:#f00;">' + rdata_status + '</span><br />' + 'reason : <span style="color:#f00;">' + rdata_reason + '</span>'
             $('#result_div').remove()
             div_dl = document.createElement('div')
             $(div_dl).html(result).css('padding', '7 0 7px 0')
